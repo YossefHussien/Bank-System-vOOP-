@@ -145,9 +145,39 @@ public:
         return Number;
     }
 
+    static int ReadShortNumberBetween(short From, short To, string ErrorMessage = "Number is not within range, Enter again:\n")
+    {
+        short Number = ReadIntNumber();
+
+        while (!IsNumberBetween(Number, From, To))
+        {
+            cout << ErrorMessage;
+            Number = ReadShortNumber();
+        }
+        return Number;
+    }
+
     static float ReadFloatNumber(string Message = "Please enter a number: ")
     {
         float Number;
+        cout << Message;
+        cin >> Number;
+
+        while (cin.fail())
+        {
+            // User didn't enter a number
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid Number, Please enter a valid one:" << endl;
+            cin >> Number;
+        }
+
+        return Number;
+    }
+
+    static float ReadShortNumber(string Message = "Please enter a number: ")
+    {
+        short Number;
         cout << Message;
         cin >> Number;
 
