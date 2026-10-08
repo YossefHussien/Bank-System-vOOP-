@@ -16,6 +16,9 @@ private:
 	short _Day = 1;
 	short _Month = 1;
 	short _Year = 1900;
+	short _Minute;
+	short _Hour;
+	short _Second;
 
 public:
 
@@ -58,6 +61,16 @@ public:
 		_Year = Date1.Year;
 	}
 
+	clsDate(short Year, short Month, short Day, short Hour,short Minute,short Second)
+	{
+		_Day = Day;
+		_Month = Month;
+		_Year = Year;
+		_Hour = Hour;
+		_Minute = Minute;
+		_Second = Second;
+	}
+
 	void SetDay(short Day) {
 		_Day = Day;
 	}
@@ -67,7 +80,37 @@ public:
 	}
 	__declspec(property(get = GetDay, put = SetDay)) short Day;
 
-	void SetMonth(short Month) {
+
+	void SetHour(short Hour) {
+		_Hour = Hour;
+	} 
+
+	short GetHour() {
+		return _Hour;
+	}
+	__declspec(property(get = GetHour, put = SetHour)) short Hour;
+
+	void SetMinute(short Minute) 
+	{
+		_Minute = Minute;
+	}
+
+	short GetMinute() {
+		return _Minute;
+	}
+	__declspec(property(get = GetMinute, put = SetMinute)) short Minute;
+	
+	void SetSecond(short Second) {
+		_Second = Second;
+	}
+
+	short GetSecond() {
+		return _Second;
+	}
+	__declspec(property(get = GetSecond, put = GetSecond)) short Second;
+
+	void SetMonth(short Month)
+	{
 		_Month = Month;
 	}
 
@@ -104,6 +147,45 @@ public:
 		Day = now->tm_mday;
 
 		return clsDate(Day, Month, Year);
+	}
+
+	static clsDate GetExactSystemDate()
+	{
+		//system date
+		time_t t = time(0);
+		tm* now = localtime(&t);
+
+		short Day, Month, Year, Hour, Minute, Second;
+
+		Year = now->tm_year + 1900;
+		Month = now->tm_mon + 1;
+		Day = now->tm_mday;
+		Hour = now->tm_hour;
+		Minute = now->tm_min;
+		Second = now->tm_sec;
+
+		return clsDate(Year, Month, Day,Hour,Minute,Second);
+	}
+
+	static string GetExactSystemDateTimeString()
+	{
+		//system date
+		time_t t = time(0);
+		tm* now = localtime(&t);
+
+		short Day, Month, Year, Hour, Minute, Second;
+
+		Year = now->tm_year + 1900;
+		Month = now->tm_mon + 1;
+		Day = now->tm_mday;
+		Hour = now->tm_hour;
+		Minute = now->tm_min;
+		Second = now->tm_sec;
+
+		string FullDate = to_string(Day) + "/" + to_string(Month) + "/" + to_string(Year);
+		FullDate += " - " + to_string(Hour) + ":" + to_string(Minute) + ":" + to_string(Second);
+
+		return FullDate;
 	}
 
 	static	bool IsValidDate(clsDate Date)

@@ -21,6 +21,11 @@ private:
 
     }
 
+    static void _DrawTableLine()
+    {
+        cout << setw(8) << left << "" << "-------------------------------------------------------------------------------------------\n";
+    }
+
 public:
 
     static void ShowUsersList()
@@ -28,24 +33,23 @@ public:
         vector <clsUser> vUsers = clsUser::GetUsersList();
 
         string Title = "User List Screen";
-        string SubTitle = "\t\t(" + to_string(vUsers.size()) + ") User(s).";
+        string SubTitle = "(" + to_string(vUsers.size()) + ") User(s).";
 
         _DrawScreenHeader(Title, SubTitle);
 
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "______________________________________________\n" << endl;
+        cout << "\n";
+        _DrawTableLine();
 
         cout << setw(8) << left << "" << "| " << left << setw(12) << "UserName";
         cout << "| " << left << setw(25) << "Full Name";
         cout << "| " << left << setw(12) << "Phone";
         cout << "| " << left << setw(20) << "Email";
         cout << "| " << left << setw(10) << "Password";
-        cout << "| " << left << setw(12) << "Permissions";
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "______________________________________________\n" << endl;
+        cout << "| " << left << setw(12) << "Permissions" << "|\n";
+        _DrawTableLine();
 
         if (vUsers.size() == 0)
-            cout << "\t\t\t\t\tNo Users Available In the System!";
+            cout << "\n\t\t\t\t\tNo Users Available In the System!\n";
         else
 
             for (clsUser User : vUsers)
@@ -55,9 +59,7 @@ public:
                 cout << endl;
             }
 
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "______________________________________________\n" << endl;
+        _DrawTableLine();
     }
 
 };
-

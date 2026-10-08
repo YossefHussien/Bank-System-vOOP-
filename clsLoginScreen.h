@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include "clsScreen.h"
+#include <fstream>
+#include "clsDate.h"
 #include "clsUser.h"
 #include <iomanip>
 #include "clsMainScreen.h"
@@ -12,23 +14,42 @@ class clsLoginScreen :protected clsScreen
 
 private:
 
-    static  void _Login()
+    
+  
+
+
+    static bool _Login()
     {
         bool LoginFailed = false;
-
+        short FailedLoginCount = 3;
         string Username, Password;
+        
         do
         {
-
             if (LoginFailed)
             {
-                cout << "\nInvlaid Username/Password!\n\n";
+                FailedLoginCount--;
+                cout << "\n";
+                _PrintIndent();
+                cout << "Invalid Username/Password!\n";
+                _PrintIndent();
+                cout << "You have " << FailedLoginCount << " trial(s) remaining\n\n";
             }
 
-            cout << "Enter Username? ";
+            if (FailedLoginCount == 0)
+            {
+                cout << "\n";
+                _PrintIndent();
+                cout << "Max Trials Reached, please try again later.\n\n";
+                return false;
+            }
+
+            _PrintIndent();
+            cout << "Enter Username: ";
             cin >> Username;
 
-            cout << "Enter Password? ";
+            _PrintIndent();
+            cout << "Enter Password: ";
             cin >> Password;
 
             CurrentUser = clsUser::Find(Username, Password);
@@ -37,20 +58,20 @@ private:
 
         } while (LoginFailed);
 
+        CurrentUser.RegisterLogin();
         clsMainScreen::ShowMainMenue();
-
+        return true;
     }
 
 public:
 
 
-    static void ShowLoginScreen()
+    static bool ShowLoginScreen()
     {
         system("cls");
-        _DrawScreenHeader("\t  Login Screen");
-        _Login();
+        _DrawScreenHeader("Login Screen");
+        return _Login();
         
     }
 
 };
-

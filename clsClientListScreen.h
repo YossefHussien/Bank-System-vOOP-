@@ -21,6 +21,11 @@ private:
 
     }
 
+    static void _DrawTableLine()
+    {
+        cout << setw(8) << left << "" << "-------------------------------------------------------------------------------------------\n";
+    }
+
 public:
 
     static void ShowClientsList()
@@ -32,25 +37,24 @@ public:
         }
 
         vector <clsBankClient> vClients = clsBankClient::GetClientsList();
-        string Title = "\t  Client List Screen";
-        string SubTitle = "\t    (" + to_string(vClients.size()) + ") Client(s).";
+        string Title = "Client List Screen";
+        string SubTitle = "(" + to_string(vClients.size()) + ") Client(s).";
 
         _DrawScreenHeader(Title, SubTitle);
 
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "_________________________________________\n" << endl;
+        cout << "\n";
+        _DrawTableLine();
 
-        cout << setw(8) << left << "" << "| " << left << setw(15) << "Accout Number";
+        cout << setw(8) << left << "" << "| " << left << setw(15) << "Account Number";
         cout << "| " << left << setw(20) << "Client Name";
         cout << "| " << left << setw(12) << "Phone";
         cout << "| " << left << setw(20) << "Email";
         cout << "| " << left << setw(10) << "Pin Code";
-        cout << "| " << left << setw(12) << "Balance";
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "_________________________________________\n" << endl;
+        cout << "| " << left << setw(12) << "Balance" << "|\n";
+        _DrawTableLine();
 
         if (vClients.size() == 0)
-            cout << "\t\t\t\tNo Clients Available In the System!";
+            cout << "\n\t\t\t\tNo Clients Available In the System!\n";
         else
 
             for (clsBankClient Client : vClients)
@@ -60,10 +64,8 @@ public:
                 cout << endl;
             }
 
-        cout << setw(8) << left << "" << "\n\t_______________________________________________________";
-        cout << "_________________________________________\n" << endl;
+        _DrawTableLine();
 
     }
 
 };
-

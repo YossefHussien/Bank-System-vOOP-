@@ -17,6 +17,11 @@ private:
         cout << "| " << setw(12) << left << Client.AccountBalance;
     }
 
+    static void _DrawTableLine()
+    {
+        cout << setw(25) << left << "" << "------------------------------------------------------------------------\n";
+    }
+
 public:
 
     static void ShowTotalBalances()
@@ -25,23 +30,22 @@ public:
         vector <clsBankClient> vClients = clsBankClient::GetClientsList();
 
         string Title = "Balances List Screen";
-        string SubTitle = "\t          (" + to_string(vClients.size()) + ") Client(s).";
+        string SubTitle = "(" + to_string(vClients.size()) + ") Client(s).";
 
         _DrawScreenHeader(Title, SubTitle);
 
-        cout << setw(25) << left << "" << "\n\t\t_______________________________________________________";
-        cout << "__________________________\n" << endl;
+        cout << "\n";
+        _DrawTableLine();
 
-        cout << setw(25) << left << "" << "| " << left << setw(15) << "Accout Number";
+        cout << setw(25) << left << "" << "| " << left << setw(15) << "Account Number";
         cout << "| " << left << setw(40) << "Client Name";
-        cout << "| " << left << setw(12) << "Balance";
-        cout << setw(25) << left << "" << "\t\t_______________________________________________________";
-        cout << "__________________________\n" << endl;
+        cout << "| " << left << setw(12) << "Balance" << "|\n";
+        _DrawTableLine();
 
         double TotalBalances = clsBankClient::GetTotalBalances();
 
         if (vClients.size() == 0)
-            cout << "\t\t\t\tNo Clients Available In the System!";
+            cout << "\n\t\t\t\tNo Clients Available In the System!\n";
         else
 
             for (clsBankClient Client : vClients)
@@ -50,12 +54,11 @@ public:
                 cout << endl;
             }
 
-        cout << setw(25) << left << "" << "\n\t\t_______________________________________________________";
-        cout << "__________________________\n" << endl;
+        _DrawTableLine();
 
-        cout << setw(8) << left << "" << "\t\t\t\t\t\t\t     Total Balances = " << TotalBalances << endl;
-        cout << setw(8) << left << "" << "\t\t\t\t  ( " << clsUtil::NumberToText(TotalBalances) << ")";
+        cout << "\n";
+        cout << setw(25) << left << "" << "Total Balances = " << TotalBalances << endl;
+        cout << setw(25) << left << "" << "( " << clsUtil::NumberToText((int)TotalBalances) << ")\n";
     }
 
 };
-

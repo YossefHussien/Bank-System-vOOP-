@@ -22,14 +22,14 @@ private:
 
     static short ReadManageUsersMenueOption()
     {
-        cout << setw(37) << left << "" << "Choose what do you want to do? [1 to 6]? ";
+        _PrintChoicePrompt(1, 6);
         short Choice = clsInputValidate::ReadShortNumberBetween(1, 6, "Enter Number between 1 to 6? ");
         return Choice;
     }
 
     static void _GoBackToManageUsersMenue()
     {
-        cout << "\n\nPress any key to go back to Manage Users Menue...";
+        _PrintGoBackMessage("Manage Users Menue");
         system("pause>0");
         ShowManageUsersMenue();
     }
@@ -131,21 +131,18 @@ public:
       }
 
         system("cls");
-        _DrawScreenHeader("\t Manage Users Screen");
+        _DrawScreenHeader("Manage Users Screen");
 
-        cout << setw(37) << left << "" << "===========================================\n";
-        cout << setw(37) << left << "" << "\t\t  Manage Users Menue\n";
-        cout << setw(37) << left << "" << "===========================================\n";
-        cout << setw(37) << left << "" << "\t[1] List Users.\n";
-        cout << setw(37) << left << "" << "\t[2] Add New User.\n";
-        cout << setw(37) << left << "" << "\t[3] Delete User.\n";
-        cout << setw(37) << left << "" << "\t[4] Update User.\n";
-        cout << setw(37) << left << "" << "\t[5] Find User.\n";
-        cout << setw(37) << left << "" << "\t[6] Main Menue.\n";
-        cout << setw(37) << left << "" << "===========================================\n";
+        _DrawMenueHeader("MANAGE USERS MENU");
+        _DrawMenueOption(1, "List Users");
+        _DrawMenueOption(2, "Add New User");
+        _DrawMenueOption(3, "Delete User");
+        _DrawMenueOption(4, "Update User");
+        _DrawMenueOption(5, "Find User");
+        _DrawMenueOption(6, "Main Menue");
+        _DrawMenueFooter();
 
         _PerformManageUsersMenueOption((enManageUsersMenueOptions)ReadManageUsersMenueOption());
     }
 
 };
-

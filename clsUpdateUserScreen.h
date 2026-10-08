@@ -34,18 +34,16 @@ private:
 
     static void _PrintUser(clsUser User)
     {
-        cout << "\nUser Card:";
-        cout << "\n___________________";
-        cout << "\nFirstName   : " << User.FirstName;
-        cout << "\nLastName    : " << User.LastName;
-        cout << "\nFull Name   : " << User.FullName();
-        cout << "\nEmail       : " << User.Email;
-        cout << "\nPhone       : " << User.Phone;
-        cout << "\nUser Name   : " << User.UserName;
-        cout << "\nPassword    : " << User.Password;
-        cout << "\nPermissions : " << User.Permissions;
-        cout << "\n___________________\n";
-
+        _DrawInfoCardHeader("User Card");
+        _DrawInfoCardLine("First Name", User.FirstName);
+        _DrawInfoCardLine("Last Name", User.LastName);
+        _DrawInfoCardLine("Full Name", User.FullName());
+        _DrawInfoCardLine("Email", User.Email);
+        _DrawInfoCardLine("Phone", User.Phone);
+        _DrawInfoCardLine("User Name", User.UserName);
+        _DrawInfoCardLine("Password", User.Password);
+        _DrawInfoCardLine("Permissions", User.Permissions);
+        _DrawInfoCardFooter();
     }
 
     static int _ReadPermissionsToSet()
@@ -106,6 +104,13 @@ private:
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pTranactions;
+        }
+
+        cout << "\nRegister Log? y/n? ";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            Permissions += clsUser::enPermissions::pRegisterLog;
         }
 
         cout << "\nManage Users? y/n? ";

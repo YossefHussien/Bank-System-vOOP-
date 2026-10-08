@@ -22,7 +22,7 @@ private:
 
     static short ReadTransactionsMenueOption()
     {
-        cout << setw(37) << left << "" << "    Choose what do you want to do? [1 to 4]? ";
+        _PrintChoicePrompt(1, 4);
         short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 4? ");
         return Choice;
     }
@@ -45,7 +45,7 @@ private:
 
     static void _GoBackToTransactionsMenue()
     {
-        cout << "\n\nPress any key to go back to Transactions Menue...";
+        _PrintGoBackMessage("Transactions Menue");
         system("pause>0");
         ShowTransactionsMenue();
 
@@ -104,17 +104,14 @@ public:
         system("cls");
         _DrawScreenHeader("Transactions Screen");
 
-        cout << setw(37) << left << "" << "    ===========================================\n";
-        cout << setw(37) << left << "" << "\t\t  Transactions Menue\n";
-        cout << setw(37) << left << "" << "    ===========================================\n";
-        cout << setw(37) << left << "" << "    \t[1] Deposit.\n";
-        cout << setw(37) << left << "" << "    \t[2] Withdraw.\n";
-        cout << setw(37) << left << "" << "    \t[3] Total Balances.\n";
-        cout << setw(37) << left << "" << "    \t[4] Main Menue.\n";
-        cout << setw(37) << left << "" << "    ===========================================\n";
+        _DrawMenueHeader("TRANSACTIONS MENU");
+        _DrawMenueOption(1, "Deposit");
+        _DrawMenueOption(2, "Withdraw");
+        _DrawMenueOption(3, "Total Balances");
+        _DrawMenueOption(4, "Main Menue");
+        _DrawMenueFooter();
 
         _PerformTransactionsMenueOption((enTransactionsMenueOptions)ReadTransactionsMenueOption());
     }
 
 };
-
