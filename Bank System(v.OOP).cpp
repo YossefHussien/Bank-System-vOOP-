@@ -1,17 +1,5 @@
 #include <iostream>
-#include <limits>
-#include <cctype>
-#include <cstdio>
-#include <ctime>
-#include <fstream>
-#include <iomanip>
-#include <string>
-#include <vector>
-#include "clsString.h"
-#include "clsBankClient.h"
-#include "clsInputValidate.h"
-#include "clsUtil.h"
-#include "clsMainScreen.h"
+#include "clsLoginScreen.h"
 
 void PrintClientRecordBalanceLine(clsBankClient Client)
 {
@@ -61,8 +49,10 @@ void ShowTotalBalances()
 
 int main()
 {
-
-	clsMainScreen::ShowMainMenue();
+	while (true)
+	{
+		clsLoginScreen::ShowLoginScreen();
+	}
 
 
 }

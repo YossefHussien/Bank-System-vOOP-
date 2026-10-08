@@ -7,6 +7,7 @@
 #include "clsInputValidate.h"
 class clsFindClientScreen : protected clsScreen
 {
+
 	static void _PrintClient(clsBankClient Client)
 	{
 		cout << "\nClient Card:";
@@ -27,6 +28,11 @@ class clsFindClientScreen : protected clsScreen
 public:
 	static void ShowFindClientScreen()
 	{
+		if (!CheckAccessRights(clsUser::enPermissions::pFindClient))
+		{
+			return;// this will exit the function and it will not continue
+		}
+
 		string AccountNumber = "";
 		_DrawScreenHeader("Find Client Screen");
 		cout << "Please Enter Account Number: ";

@@ -47,6 +47,11 @@ class clsUpdateClientScreen : protected clsScreen
 public:
 	static void ShowUpdateClientScreen()
 	{
+		if (!CheckAccessRights(clsUser::enPermissions::pUpdateClients))
+		{
+			return;// this will exit the function and it will not continue
+		}
+
 		_DrawScreenHeader("Update Client Screen");
 		string AccountNumber = "";
 		cout << "Please Enter Client Account Number: ";
@@ -63,7 +68,7 @@ public:
 		cout << "Client Card : \n";
 		_PrintClient(Client1);
 
-		cout << "\nAre you sure you want to delete this client? y/n\n";
+		cout << "\nAre you sure you want to update this client? y/n\n";
 		char Answer = 'n';
 		cin >> Answer;
 
