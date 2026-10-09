@@ -236,24 +236,24 @@ public:
 		}
 	}
 
-	static string EncryptText(string Text, short EncryptionKey)
+	static string EncryptText(string Text, short EncryptionKey = 2)
 	{
-		for (int i = 0; i <= Text.length(); i++)
-		{ 
+		for (size_t i = 0; i < Text.length(); i++)
+		{
 			Text[i] = char((int)Text[i] + EncryptionKey);
-
 		}
-		return Text; 
+
+		return Text;
 	}
 
-	static string DecryptionText(string Text, short EncryptionKey)
+	static string DecryptText(string Text, short EncryptionKey = 2)
 	{
-		for (int i = 0; i <= Text.length(); i++)
+		for (size_t i = 0; i < Text.length(); i++)
 		{
 			Text[i] = char((int)Text[i] - EncryptionKey);
-			
 		}
-		return Text; 
+
+		return Text;
 	}
 
 	static string  Tabs(short NumberOfTabs)

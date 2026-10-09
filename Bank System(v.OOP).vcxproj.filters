@@ -99,10 +99,10 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="clsTransferScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="clsTranferLogScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
