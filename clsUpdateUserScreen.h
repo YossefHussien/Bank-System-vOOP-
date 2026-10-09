@@ -106,18 +106,18 @@ private:
             Permissions += clsUser::enPermissions::pTranactions;
         }
 
-        cout << "\nRegister Log? y/n? ";
-        cin >> Answer;
-        if (Answer == 'y' || Answer == 'Y')
-        {
-            Permissions += clsUser::enPermissions::pRegisterLog;
-        }
-
         cout << "\nManage Users? y/n? ";
         cin >> Answer;
         if (Answer == 'y' || Answer == 'Y')
         {
             Permissions += clsUser::enPermissions::pManageUsers;
+        }
+
+        cout << "\nRegister Log? y/n? ";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            Permissions += clsUser::enPermissions::pRegisterLog;
         }
 
         return Permissions;

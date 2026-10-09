@@ -80,6 +80,8 @@ private:
 
             while (getline(MyFile, Line))
             {
+                if (Line.empty() || Line.find_first_not_of(" \t\r\n") == string::npos)
+                    continue;
 
                 clsUser User = _ConvertLinetoUserObject(Line);
 
@@ -261,6 +263,9 @@ public:
             string Line;
             while (getline(MyFile, Line))
             {
+                if (Line.empty() || Line.find_first_not_of(" \t\r\n") == string::npos)
+                    continue;
+
                 clsUser User = _ConvertLinetoUserObject(Line);
                 if (User.UserName == UserName)
                 {
@@ -287,6 +292,9 @@ public:
             string Line;
             while (getline(MyFile, Line))
             {
+                if (Line.empty() || Line.find_first_not_of(" \t\r\n") == string::npos)
+                    continue;
+
                 clsUser User = _ConvertLinetoUserObject(Line);
                 if (User.UserName == UserName && User.Password == Password)
                 {
@@ -432,6 +440,8 @@ public:
 
             while (getline(MyFile, Line))
             {
+                if (Line.empty() || Line.find_first_not_of(" \t\r\n") == string::npos)
+                    continue;
 
                 LoginRegisterRecord = _ConvertLoginRegisterLineToRecord(Line);
 

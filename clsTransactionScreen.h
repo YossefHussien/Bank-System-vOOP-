@@ -7,6 +7,7 @@
 #include "clsDepositScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransferScreen.h"
 
 using namespace std;
 
@@ -17,13 +18,13 @@ class clsTransactionScreen :protected clsScreen
 private:
     enum enTransactionsMenueOptions {
         eDeposit = 1, eWithdraw = 2,
-        eShowTotalBalance = 3, eShowMainMenue = 4
+        eShowTotalBalance = 3, eTransfer = 4,eShowMainMenue = 5
     };
 
     static short ReadTransactionsMenueOption()
     {
-        _PrintChoicePrompt(1, 4);
-        short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 4? ");
+        _PrintChoicePrompt(1, 5);
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 5? ");
         return Choice;
     }
 
@@ -41,6 +42,11 @@ private:
     static void _ShowTotalBalancesScreen()
     {
         clsTotalBalancesScreen::ShowTotalBalances();
+    }
+
+    static void _ShowTransferScreen()
+    {
+        clsTransferScreen::ShowTransferScreen();
     }
 
     static void _GoBackToTransactionsMenue()
@@ -79,6 +85,11 @@ private:
             break;
         }
 
+        case enTransactionsMenueOptions::eTransfer:
+            system("cls");
+            _ShowTransferScreen();
+            _GoBackToTransactionsMenue();
+            break;
 
         case enTransactionsMenueOptions::eShowMainMenue:
         {
@@ -108,7 +119,8 @@ public:
         _DrawMenueOption(1, "Deposit");
         _DrawMenueOption(2, "Withdraw");
         _DrawMenueOption(3, "Total Balances");
-        _DrawMenueOption(4, "Main Menue");
+        _DrawMenueOption(4, "Transfer");
+        _DrawMenueOption(5, "Main Menue");
         _DrawMenueFooter();
 
         _PerformTransactionsMenueOption((enTransactionsMenueOptions)ReadTransactionsMenueOption());

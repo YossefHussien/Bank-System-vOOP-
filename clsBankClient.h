@@ -54,6 +54,9 @@ class clsBankClient : public clsPerson
 
 			while (getline(MyFile, Line))
 			{
+				if (Line.empty() || Line.find_first_not_of(" \t\r\n") == string::npos)
+					continue;
+
 				clsBankClient Client = _ConvertLinetoClientObject(Line);
 				vClients.push_back(Client);
 			}
@@ -340,6 +343,19 @@ public :
 		}
 	
 	}
+
+	bool Transfer(float Amount, clsBankClient & DestinationClient)
+	{
+		if (Amount > AccountBalance)
+		{
+			return false;
+		}
+
+		Withdraw(Amount);
+		DestinationClient.Deposit(Amount);
+		return true;
+	}
+
 
 };
 
