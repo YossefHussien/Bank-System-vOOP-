@@ -147,7 +147,7 @@ public:
 
     static int ReadShortNumberBetween(short From, short To, string ErrorMessage = "Number is not within range, Enter again:\n")
     {
-        short Number = ReadIntNumber();
+        short Number = ReadShortNumber();
 
         while (!IsNumberBetween(Number, From, To))
         {
@@ -178,7 +178,6 @@ public:
     static float ReadShortNumber(string Message = "Please enter a number: ")
     {
         short Number;
-        cout << Message;
         cin >> Number;
 
         while (cin.fail())
