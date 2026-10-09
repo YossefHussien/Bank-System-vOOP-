@@ -8,6 +8,7 @@
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
 #include "clsTransferScreen.h"
+#include "clsTranferLogScreen.h"
 
 using namespace std;
 
@@ -18,13 +19,13 @@ class clsTransactionScreen :protected clsScreen
 private:
     enum enTransactionsMenueOptions {
         eDeposit = 1, eWithdraw = 2,
-        eShowTotalBalance = 3, eTransfer = 4,eShowMainMenue = 5
+        eShowTotalBalance = 3, eTransfer = 4, eTransferLog = 5, eShowMainMenue = 6
     };
 
     static short ReadTransactionsMenueOption()
     {
-        _PrintChoicePrompt(1, 5);
-        short Choice = clsInputValidate::ReadShortNumberBetween(1, 4, "Enter Number between 1 to 5? ");
+        _PrintChoicePrompt(1, 6);
+        short Choice = clsInputValidate::ReadShortNumberBetween(1, 6, "Enter Number between 1 to 6? ");
         return Choice;
     }
 
@@ -47,6 +48,11 @@ private:
     static void _ShowTransferScreen()
     {
         clsTransferScreen::ShowTransferScreen();
+    }
+
+    static void _ShowTransferLogScreen()
+    {
+        clsTransferLogScreen::ShowTransferLogScreen();
     }
 
     static void _GoBackToTransactionsMenue()
@@ -84,13 +90,16 @@ private:
             _GoBackToTransactionsMenue();
             break;
         }
-
         case enTransactionsMenueOptions::eTransfer:
             system("cls");
             _ShowTransferScreen();
             _GoBackToTransactionsMenue();
             break;
-
+        case enTransactionsMenueOptions::eTransferLog:
+            system("cls");
+            _ShowTransferLogScreen();
+            _GoBackToTransactionsMenue();
+            break;
         case enTransactionsMenueOptions::eShowMainMenue:
         {
            // do nothing, main screen will handle it.
@@ -120,7 +129,8 @@ public:
         _DrawMenueOption(2, "Withdraw");
         _DrawMenueOption(3, "Total Balances");
         _DrawMenueOption(4, "Transfer");
-        _DrawMenueOption(5, "Main Menue");
+        _DrawMenueOption(5, "Transfer Log");
+        _DrawMenueOption(6, "Main Menue");
         _DrawMenueFooter();
 
         _PerformTransactionsMenueOption((enTransactionsMenueOptions)ReadTransactionsMenueOption());
