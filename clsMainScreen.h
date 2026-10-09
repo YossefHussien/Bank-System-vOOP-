@@ -12,6 +12,7 @@
 #include "clsManageUsersScreen.h"
 #include "Global.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsCurrencyExchangeScreen.h"
 
 using namespace std;
 
@@ -23,13 +24,13 @@ private:
     enum enMainMenueOptions {
         eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
         eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-        eManageUsers = 7, eLoginRegister = 8 , eExit = 9
+        eManageUsers = 7, eLoginRegister = 8 , eCurrencyExchange = 9,eExit = 10
     };
 
     static short _ReadMainMenueOption()
     {
-        _PrintChoicePrompt(1, 9);
-        short Choice = clsInputValidate::ReadIntNumberBetween(1, 9, "Enter Number between 1 to 9? ");
+        _PrintChoicePrompt(1, 10);
+        short Choice = clsInputValidate::ReadIntNumberBetween(1, 10, "Enter Number between 1 to 10? ");
         return Choice;
     }
 
@@ -80,6 +81,12 @@ private:
         clsManageUsersScreen::ShowManageUsersMenue();
 
     }
+
+    static void _ShowCurrencyExchangeScreen()
+    {
+        clsCurrencyExchangeScreen::ShowCurrencyExchangeMenu();
+    }
+
 
     static void _Logout()
     {
@@ -142,6 +149,11 @@ private:
             _ShowLoginRegisterScreen();
             _GoBackToMainMenue();
             break;
+        case enMainMenueOptions::eCurrencyExchange:
+            system("cls");
+            _ShowCurrencyExchangeScreen();
+            _GoBackToMainMenue();
+            break;
         case enMainMenueOptions::eExit:
             system("cls");
             _Logout();
@@ -169,7 +181,8 @@ public:
         _DrawMenueOption(6, "Transactions");
         _DrawMenueOption(7, "Manage Users");
         _DrawMenueOption(8, "Login Register");
-        _DrawMenueOption(9, "Logout");
+        _DrawMenueOption(9, "Currency Exchange");
+        _DrawMenueOption(10, "Logout");
         _DrawMenueFooter();
 
         _PerfromMainMenueOption((enMainMenueOptions)_ReadMainMenueOption());
