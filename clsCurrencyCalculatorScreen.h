@@ -37,7 +37,6 @@ private:
 
     }
 
-
     static  void _PrintCurrencyCard(clsCurrency Currency, string Title = "Currency Card:")
     {
 

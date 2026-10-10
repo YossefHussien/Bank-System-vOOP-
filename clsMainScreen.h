@@ -87,7 +87,6 @@ private:
         clsCurrencyExchangeScreen::ShowCurrencyExchangeMenu();
     }
 
-
     static void _Logout()
     {
         CurrentUser = clsUser::Find("", "");
@@ -98,6 +97,7 @@ private:
     {
         clsLoginRegisterScreen::ShowLoginRegisterScreen();
     }
+
     static void _PerfromMainMenueOption(enMainMenueOptions MainMenueOption)
     {
         switch (MainMenueOption)
