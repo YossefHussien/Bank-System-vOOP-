@@ -2,7 +2,7 @@ United States of America#//#USD#//#US Dollar#//#1.000000
 Afghanistan#//#AFN#//#Afghanistan Afghani#//#87.480003
 Albania#//#ALL#//#Albania Lek(e)#//#109.010002
 Algeria#//#DZD#//#Algerian Dinar#//#137.046005
-American Samoa#//#USD#//#US Dollar#//#1
+American Samoa#//#USD#//#US Dollar#//#1.000000
 France#//#EUR#//#Euro#//#0.900000
 Angola#//#AOA#//#Angolan Kwanza#//#504.734009
 Anguilla#//#XCD#//#E.C. Dollar#//#2.700000
@@ -58,7 +58,7 @@ Dominica#//#XCD#//#E.C. Dollar#//#2.700000
 Dominican Republic#//#DOP#//#Dominican Peso#//#54.716000
 East Timor#//#USD#//#US Dollar#//#1.000000
 Ecuador#//#USD#//#US Dollar#//#1.000000
-Egypt#//#EGP#//#Egyptian Pound#//#24.591999
+Egypt#//#EGP#//#Egyptian Pound#//#52.234020
 El Salvador#//#USD#//#US Dollar#//#1.000000
 Equatorial Guinea#//#XAF#//#CFA Franc#//#615.401978
 Eritrea#//#ERN#//#Eritrea Nakfa#//#15.000000
