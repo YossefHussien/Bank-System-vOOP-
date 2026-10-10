@@ -59,6 +59,8 @@ public:
                 cout << "-------------------------\n";
                 NewRate = clsInputValidate::ReadFloatNumber("Enter New Rate : ");
                 Currency.UpdateRate(NewRate);
+
+                cout << "\nCurrency Rate Updated Successfully.\n";
                 _PrintCurrency(Currency);
             }
             else

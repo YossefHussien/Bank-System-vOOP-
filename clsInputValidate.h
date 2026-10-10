@@ -160,7 +160,6 @@ public:
     static float ReadFloatNumber(string Message = "Please enter a number: ")
     {
         float Number;
-        cout << Message;
         cin >> Number;
 
         while (cin.fail())
